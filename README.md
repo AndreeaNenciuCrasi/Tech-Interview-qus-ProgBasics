@@ -68,6 +68,7 @@ Methods:
 ### Algorithms
 
 #### 1. Fibonacci sequences. Write a method (or pseudo code), that generates the Fibonacci sequences.
+        
         def generate_fibonacci_sequences(number):
             i = 0
             nr1 = 0
@@ -82,7 +83,9 @@ Methods:
                 i += 1
             j = 1   
             return fibonacci_list
+
 #### 2. How do you find a max value in a list/array if you can’t use any built-in functions?
+        
         def get_max(list):
             max = list[0]
             i = 1
@@ -91,7 +94,9 @@ Methods:
                     max = list[i]
                 i += 1
             return max
+
 #### 3. How do you find the average of values in a list/array if you can’t use any built-in functions?
+        
         def get_average(list):    
             average = 0
             sum = list[0]
@@ -101,16 +106,66 @@ Methods:
                 i += 1
             average = sum / len(list)
             return average
-#### What do we call an *in-place* sort?
-#### Explain an algorithm which sorts a list!
+
+#### 4. What do we call an *in-place* sort?
+
+You can also use the list.sort() method of a list. It modifies the list in-place (and returns None to avoid confusion). Usually it's less convenient than sorted() - but if you don't need the original list, it's slightly more efficient.
+
+        >>> a = [5, 2, 3, 1, 4]
+        >>> a.sort()
+        >>> a
+        [1, 2, 3, 4, 5]
+
+Another difference is that the list.sort() method is only defined for lists. In contrast, the sorted()function accepts any iterable.
+
+        >>> sorted({1: 'D', 2: 'B', 3: 'B', 4: 'E', 5: 'A'})
+        [1, 2, 3, 4, 5]
+
+#### 5. Explain an algorithm which sorts a list!
+
+Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in wrong order.
+
+        def bubbleSort(arr):
+            n = len(arr)
+        
+            # Traverse through all array elements
+            for i in range(n):
+        
+                # Last i elements are already in place
+                for j in range(0, n-i-1):
+        
+                    # traverse the array from 0 to n-i-1
+                    # Swap if the element found is greater
+                    # than the next element
+                    if arr[j] > arr[j+1] :
+                        arr[j], arr[j+1] = arr[j+1], arr[j]
 
 ### Programming paradigms - procedural
 
-#### What is the call stack?
-#### What is “Stack overflow”?
-#### What are the main parts of a function?
+#### 1. What is the call stack?
 
-### Programming languages - Python  
+Python stores information about functions which have been called in a call stack. Whenever a function is called, a new stack frame is added to the stack – all of the function’s parameters are added to it, and as the body of the function is executed, local variables will be created there. When the function finishes executing, its stack frame is discarded, and the flow of control returns to wherever you were before you called the function, at the previous level of the stack.
+
+
+#### 2. What is “Stack overflow”?
+
+Python’s stack has a finite size – if we keep placing instances of the function on the stack(recursion) we will eventually fill it up and cause a stack overflow. Python protects itself from stack overflows by setting a limit on the number of times that a function is allowed to recurse.
+
+#### 3. What are the main parts of a function?
+
+        def NAME( LIST OF PARAMETERS ):
+            STATEMENTS
+
+There can be any number of statements inside the function, but they have to be indented from the def. 
+
+Function definitions:
+- A header, which begins with a keyword and ends with a colon.
+- A body consisting of one or more Python statements, each indented the same amount – 4 spaces is the Python standard – from the header.
+
+
+
+### Programming languages - Python
+
 #### How do you use a dictionary in Python?
 #### What does it mean that an object is immutable in Python?
 #### What is conditional expression in Python?
