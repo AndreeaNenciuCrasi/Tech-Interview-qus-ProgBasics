@@ -166,7 +166,70 @@ Function definitions:
 
 ### Programming languages - Python
 
-#### How do you use a dictionary in Python?
+#### 1. How do you use a dictionary in Python?
+
+The Python dictionary type is called dict. We can use a dictionary to store key-value pairs. To define a dictionary literal, we put a comma-separated list of key-value pairs between curly brackets. We use a colon to separate each key from its value. We access values in the dictionary in much the same way as list or tuple elements, but we use keys instead of indices:
+
+        marbles = {"red": 34, "green": 30, "brown": 31, "yellow": 29 }
+
+        personal_details = {
+            "name": "Jane Doe",
+            "age": 38, # trailing comma is legal
+        }
+
+        print(marbles["green"])
+        print(personal_details["name"])
+
+        # modify a value
+        marbles["red"] += 3
+        personal_details["name"] = "Jane Q. Doe"
+
+The keys of a dictionary don’t have to be strings – they can be any immutable type, including numbers and even tuples. We can mix different types of keys and different types of values in one dictionary. Keys are unique – if we repeat a key, we will overwrite the old value with the new value. When we store a value in a dictionary, the key doesn’t have to exist – it will be created automatically:
+
+        battleship_guesses = {
+            (3, 4): False,
+            (2, 6): True,
+            (2, 5): True,
+        }
+
+        surnames = {} # this is an empty dictionary
+        surnames["John"] = "Smith"
+        surnames["John"] = "Doe"
+        print(surnames) # we overwrote the older surname
+
+        marbles = {"red": 34, "green": 30, "brown": 31, "yellow": 29 }
+        marbles["blue"] = 30
+
+Like sets, dictionaries are not ordered – if we print a dictionary, the order will be random.
+
+Here are some commonly used methods of dictionary objects:
+
+        marbles = {"red": 34, "green": 30, "brown": 31, "yellow": 29 }
+
+        # Get a value by its key, or None if it doesn't exist
+        marbles.get("orange")
+        # We can specify a different default
+        marbles.get("orange", 0)
+
+        # Add several items to the dictionary at once
+        marbles.update({"orange": 34, "blue": 23, "purple": 36})
+
+        # All the keys in the dictionary
+        marbles.keys()
+        # All the values in the dictionary
+        marbles.values()
+        # All the items in the dictionary
+        marbles.items()
+
+We can check if a key is in the dictionary using in and not in:
+
+        print("purple" in marbles)
+        print("white" not in marbles)
+        
+We can also check if a value is in the dictionary using in in conjunction with the values method:
+
+    print("Smith" in surnames.values())
+
 #### What does it mean that an object is immutable in Python?
 #### What is conditional expression in Python?
 #### What are different types of arguments in Python?
