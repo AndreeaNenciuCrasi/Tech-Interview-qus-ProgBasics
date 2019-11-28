@@ -230,10 +230,95 @@ We can also check if a value is in the dictionary using in in conjunction with t
 
     print("Smith" in surnames.values())
 
-#### What does it mean that an object is immutable in Python?
-#### What is conditional expression in Python?
-#### What are different types of arguments in Python?
+#### 2. What does it mean that an object is immutable in Python?
+
+A mutable(list, dictionary, set) object can be changed after it is created, and an immutable object can’t.
+Objects of built-in types like (int, float, bool, str, tuple, unicode) are immutable.
+
+- Python handles mutable and immutable objects differently.
+- Immutable are quicker to access than mutable objects.
+- Mutable objects are great to use when you need to change the size of the object, example list, dict etc.. Immutables are used when you need to ensure that the object you made will always stay the same.
+- Immutable objects are fundamentally expensive to “change”, because doing so involves creating a copy. Changing mutable objects is cheap.
+
+#### 3. What is conditional expression in Python?
+
+Python supports one additional decision-making entity called a conditional expression. (It is also referred to as a conditional operator or ternary operator in various places in the Python documentation.) 
+
+In its simplest form, the syntax of the conditional expression is as follows:
+
+        <expr1> if <conditional_expr> else <expr2>
+
+This is different from the if statement forms listed above because it is not a control structure that directs the flow of program execution. It acts more like an operator that defines an expression. In the above example, <conditional_expr> is evaluated first. If it is true, the expression evaluates to <expr1>. If it is false, the expression evaluates to <expr2>.
+
+Notice the non-obvious order: the middle expression is evaluated first, and based on that result, one of the expressions on the ends is returned. Here are some examples that will hopefully help clarify:
+
+        >>> raining = False
+        >>> print("Let's go to the", 'beach' if not raining else 'library')
+        Let's go to the beach
+        >>> raining = True
+        >>> print("Let's go to the", 'beach' if not raining else 'library')
+        Let's go to the library
+
+        >>> age = 12
+        >>> s = 'minor' if age < 21 else 'adult'
+        >>> s
+        'minor'
+
+        >>> 'yes' if ('qux' in ['foo', 'bar', 'baz']) else 'no'
+        'no'
+
+#### 4. What are different types of arguments in Python?
+
+Types of Python Function Arguments
+
+
+a. Default Argument in Python
+Python Program arguments can have default values. We assign a default value to an argument using the assignment operator in python(=). When we call a function without a value for an argument, its default value (as mentioned) is used.
+
+        >>> def greeting(name='User'):
+                        print(f"Hello, {name}")
+        >>> greeting('Ayushi')
+
+Any number of arguments can have a default value. But you must make sure to not have a non-default argument after a default argument. In other words, if you provide a default argument, all others succeeding it must have default values as well. The reason is simple. Imagine you have a function with two parameters. The first argument has a default value, but the second doesn’t. Now when you call it(if it was allowed), you provide only one argument. The interpreter takes it to be the first argument. What happens to the second argument, then? It has no clue.
+
+
+b. Python Keyword Arguments
+With keyword arguments in python, we can change the order of passing the arguments without any consequences. Let’s take a function to divide two numbers, and return the quotient.
+
+        >>> def divide(a,b):
+                        return a/b
+        >>> divide(3,2)
+
+We can call this function with arguments in any order, as long as we specify which value goes into what.
+
+        >>> divide(a=1,b=2)
+        0.5
+
+        >>> divide(b=2,a=1)
+        0.5
+As you can see, both give us the same thing. These are keyword python function arguments.
+But if you try to put a positional argument after a keyword argument, it will throw Python exception of SyntaxError.
+
+        >>> divide(b=2,1)
+SyntaxError: positional argument follows keyword argument in python.
+
+
+c. Python Arbitrary Arguments
+You may not always know how many arguments you’ll get. In that case, you use an asterisk(*) before an argument name.
+
+        >>> def sayhello(*names):
+                        for name in names:
+                                        print(f"Hello, {name}")
+And then when you call the function with a number of arguments, they get wrapped into a Python tuple. We iterate over them using the for loop in python.
+
+        >>> sayhello('Ayushi','Leo','Megha')
+        Hello, Ayushi
+        Hello, Leo
+        Hello, Megha
+
 #### What is variable shadowing? (context: variable scope)
+
+
 #### What can happen if you try to delete/drop/add an item from a List, while you are iterating over it in Python?
 #### What is the "golden rule" of variable scoping in Python (context: LEGB)? What is the lifetime of variables?
 #### If you need to access the iterator variable after a for loop, how would you do it in Python?
