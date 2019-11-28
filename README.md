@@ -627,37 +627,178 @@ When making code changes, you want to make commits that are generally smaller an
 - git is the version control software itself
 - GitHub is the popular website that many programming professionals use to display and work on code. The site itself uses the git software to maintain the users' code.
 
+
 ## Software design
+
 
 ### Clean code
 
-#### What does clean code mean?
-#### What steps do we usually do during a clean code refactoring?
+#### 1. What does clean code mean?
+
+“Clean code is code that has been taken care of. Someone has taken the time to keep it simple and orderly. They have paid appropriate attention to details. They have cared.” Robert C. Martin - author of Clean Code
+
+The principle behind clean code is that in the future, the code a person writes, will probably be read by another person, even the writer itself, and it will be much easier for that person to understand, troubleshoot or improve code that has been written with this in mind. The main points of clean code are: easy to understand, easy to maintain, easy to spot bugs, easy to test, DRY over WET, naming conventions, indentation and formatting.
+
+#### 2. What steps do we usually do during a clean code refactoring?
+
+1. Read through the whole code
+2. Summarize what is the purpose of the script in one sentence.
+3. Run the code to see what is the end result
+4. The code should keep runnable and show the same content when you finish the refactor
+5. Do not forget to run the code frequently to check you are on the right track
+6. How to refactor it?
+    - Remove clutter: Clutter is anything in your code that does not add value
+        - Format your code
+        - Delete comments
+    - Remove complexity:
+        - bad names
+        - long methods
+        - deep conditionals
+        - improper variable scopes (global, local)
+    - Remove cleverness: If it's simple and elegant you wouldn't refer to it as 'clever'
+    - Remove the 3 D's:
+        - duplication
+        - duplication
+        - duplication
+    - This can be applied by extracting the duplicated code parts into functions
+
 
 ### Error handling
 
-#### What is exception handling?
-#### What are the basics of exception handling in Python?
-#### In which case should we catch an exception? Why?
-#### What can/should we do with an exception in the ‘except’ block?
-#### What does the else and finally statement do in a try-except block in Python?
+#### 1. What is exception handling?
+
+There are some situations in which runtime errors are likely to occur. Whenever we try to read a file or get input from a user, there is a chance that something unexpected will happen – the file may have been moved or deleted, and the user may enter data which is not in the right format. Good programmers should add safeguards to their programs so that common situations like this can be handled gracefully – a program which crashes whenever it encounters an easily foreseeable problem is not very pleasant to use. Most users expect programs to be robust enough to recover from these kinds of setbacks.
+
+If we know that a particular section of our program is likely to cause an error, we can tell Python what to do if it does happen. Instead of letting the error crash our program we can intercept it, do something about it, and allow the program to continue.
+
+All the runtime (and syntax) errors that we have encountered are called exceptions in Python – Python uses them to indicate that something exceptional has occurred, and that your program cannot continue unless it is handled.
+
+#### 2. What are the basics of exception handling in Python?
+
+The try and except statements, with the additional else and finally options, are the basic exception handling workflow in Python.
+
+When an exception occurs, the normal flow of execution is interrupted. Python checks to see if the line of code which caused the exception is inside a try block. If it is, it checks to see if any of the except blocks associated with the try block can handle that type of exception. If an appropriate handler is found, the exception is handled, and the program continues from the next statement after the end of that try-except.
+
+If there is no such handler, or if the line of code was not in a try block, Python will go up one level of scope: if the line of code which caused the exception was inside a function, that function will exit immediately, and the line which called the function will be treated as if it had thrown the exception. Python will check if that line is inside a try block, and so on. When a function is called, it is placed on Python’s stack. Python traverses this stack when it tries to handle an exception.
+
+If an exception is thrown by a line which is in the main body of your program, not inside a function, the program will terminate. When the exception message is printed, you should also see a traceback – a list which shows the path the exception has taken, all the way back to the original line which caused the error.
+
+#### 3. In which case should we catch an exception? Why?
+
+In all cases because it can prevent the program from stopping and, if well constructed, can tell the users what they need to do next to correct the error. Validation is one major section where exception handling is very useful, you woudn't want your program to close every time a typo is made in a data input page, several steps in your work flow.
+
+#### 4. What can/should we do with an exception in the ‘except’ block?
+
+Mainly print information to help the user understand what happened and what needs to be done. Other blocks of code can be placed along side the print statement as in any other location.
+
+#### 5. What does the else and finally statement do in a try-except block in Python?
+
+There are two other clauses that we can add to a try-except block: else and finally. The else clause will be executed only if the try clause doesn’t raise an exception:
+
+    try:
+        age = int(input("Please enter your age: "))
+    except ValueError:
+        print("Hey, that wasn't a number!")
+    else:
+        print("I see that you are %d years old." % age)
+The finally clause will be executed at the end of the try-except block no matter what – if there is no exception, if an exception is raised and handled, if an exception is raised and not handled, and even if we exit the block using break, continue or return. We can use the finally clause for cleanup code that we always want to be executed:
+
+    try:
+        age = int(input("Please enter your age: "))
+    except ValueError:
+        print("Hey, that wasn't a number!")
+    else:
+        print("I see that you are %d years old." % age)
+    finally:
+        print("It was really nice talking to you.  Goodbye!")
+
 
 ## Software Development Methodologies
 
-#### What is the main goal of a retrospective meeting?
+#### 1. What is the main goal of a retrospective meeting?
+
+The goal of the retrospective is for the team members to discuss among themselves about how the work went during the last sprint so that better ways can be found to meet the project's goals. This means the team should talk about its internal processes as well.
+
 
 ## Programming environment
 
 ### Unix
 
-#### What is UNIX and what is Linux?
-#### What do we call the shell in Linux?
-#### What does root means in a Linux environment?
-#### How do you access your personal files in Linux?
-#### How can you install an application in Linux?
-#### What is package management in Linux, what are repositories?
-#### How do you navigate in the filesystem with the command line?
-#### What does the following commands do: mkdir, rm, cat, cp, touch?
-#### How can you look up what does a command do in Linux if you have no internet connection?
-#### What does the following commands do: head, tail, more, less?
-#### How do you download a file from internet using the terminal?
+#### 1. What is UNIX and what is Linux?
+
+Unix and Unix-like operating systems are a family of computer operating systems that are derived from the original Unix System from Bell Labs. Initial proprietary derivatives included the HP-UX and the SunOS systems. However, growing incompatibility between these systems led to the creation of interoperability standards like POSIX. Modern POSIX systems include Linux, its variants, and Mac OS.
+
+Linux is an operating system, where the linux kernel - the part that manages the CPU, memory and peripheral devices - is the defining component.
+
+#### 2. What do we call the shell in Linux?
+
+Simply put, the shell is a program that takes commands from the keyboard and gives them to the operating system to perform. On most Linux systems a program called bash (which stands for Bourne Again SHell, an enhanced version of the original Unix shell program, sh, written by Steve Bourne) acts as the shell program.
+
+#### 3. What does root means in a Linux environment?
+
+Root is the user name or account that by default has access to all commands and files on a Linux or other Unix-like operating systems. It is also referred to as the root account, root user or the superuser.
+
+#### 4. How do you access your personal files in Linux?
+
+Mainly the directory /home/username is intended for personal files and a shorter path would be ~/
+
+#### 5. How can you install an application in Linux?
+
+- by using the command line - in Ubuntu and other similar distros this is usually "apt-get install name" which installs the application directly from the repository
+- by depackaging a .deb file with the dpkg app command
+
+#### 6. What is package management in Linux, what are repositories?
+
+In few words, package management is a method of installing and maintaining (which includes updating and probably removing as well) software on the system.
+
+- dpkg is a low-level package manager for Debian-based systems. It can install, remove, provide information about and build *.deb packages but it can’t automatically download and install their corresponding dependencies.
+
+- apt-get is a high-level package manager for Debian and derivatives, and provides a simple way to retrieve and install packages, including dependency resolution, from multiple sources using the command line. Unlike dpkg, apt-get does not work directly with *.deb files, but with the package proper name.
+
+- aptitude is another high-level package manager for Debian-based systems, and can be used to perform management tasks (installing, upgrading, and removing packages, also handling dependency resolution automatically) in a fast and easy way. It provides the same functionality as apt-get and additional ones, such as offering access to several versions of a package.
+
+- rpm is the package management system used by Linux Standard Base (LSB)-compliant distributions for low-level handling of packages. Just like dpkg, it can query, install, verify, upgrade, and remove packages, and is more frequently used by Fedora-based distributions, such as RHEL and CentOS.
+
+- yum adds the functionality of automatic updates and package management with dependency management to RPM-based systems. As a high-level tool, like apt-get or aptitude, yum works with repositories.
+
+A Linux repository is a storage location from which your system retrieves and installs OS updates and applications. Each repository is a collection of software hosted on a remote server and intended to be used for installing and updating software packages on Linux systems. ... Repositories contain thousands of programs.
+
+#### 7. How do you navigate in the filesystem with the command line?
+
+In the terminal window, several commands can be typed:
+
+- pwd: prints current working directory
+- cd directory_name changes the directory to the directory_name one
+- cd .. will change to the parent directory, ".." is the symbol
+- cd / will irectly change to the root directory
+- cd ~ or cd ~/ will go to the user's home directory
+- ls will list the direcotries and files in the current directory
+
+#### 8. What does the following commands do: mkdir, rm, cat, cp, touch?
+
+- mkdir: Create the DIRECTORY(ies), if they do not already exist.
+- rm: removes each specified file. By default, it does not remove directories.
+- cat: concatenate files and print on the standard output (screen)
+- cp: copy files and directories. Copy SOURCE to DEST, or multiple SOURCE(s) to DIRECTORY.
+- touch: copy files and directories. Update the access and modification times of each FILE to the current time.
+
+#### 9. How can you look up what does a command do in Linux if you have no internet connection?
+
+- man mkdir - to use the manual information
+- help cd - to use the help page if it exists
+- info cp
+
+#### 10. What does the following commands do: head, tail, more, less?
+
+- head: Print the first 10 lines of each FILE to standard output. With more than one FILE, precede each with a header giving the file name.
+- tail: Print the last 10 lines of each FILE to standard output. With more than one FILE, precede each with a header giving the file name.
+- more: more is a filter for paging through text one screenful at a time. This version is especially primitive. Users should realize that less(1) provides more(1) emulation plus extensive enhancements.
+- less: Less is a program similar to more (1), but it has many more features. Less does not have to read the entire input file before starting, so with large input files it starts up faster than text editors like vi (1).
+
+#### 11. How do you download a file from internet using the terminal?
+
+wget
+
+GNU Wget is a free utility for non-interactive download of files from the Web. It supports HTTP, HTTPS, and FTP protocols, as well as retrieval through HTTP proxies. Wget is non-interactive, meaning that it can work in the background, while the user is not logged on. This allows you to start a retrieval and disconnect from the system, letting Wget finish the work. By contrast, most of the Web browsers require constant user's presence, which can be a great hindrance when transferring a lot of data.
+Wget can follow links in HTML, XHTML, and CSS pages, to create local versions of remote web sites, fully recreating the directory structure of the original site. This is sometimes referred to as "recursive downloading." While doing that, Wget respects the Robot Exclusion Standard (/robots.txt). Wget can be instructed to convert the links in downloaded files to point at the local files, for offline viewing.
+Wget has been designed for robustness over slow or unstable network connections; if a download fails due to a network problem, it will keep retrying until the whole file has been retrieved. If the server supports regetting, it will instruct the server to continue the download from where it left off.
