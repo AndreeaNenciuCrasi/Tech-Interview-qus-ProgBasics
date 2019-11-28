@@ -570,9 +570,23 @@ If the return statement is without an expression, the special value None is retu
 
 ### Debugging
 
-#### What techniques can you use while debugging a program in Python?
-#### What does step over, step into and step out mean while using the debugger?
-#### How can you start to debug a program from a certain line using the debugger?
+#### 1. What techniques can you use while debugging a program in Python?
+
+- Rubber Duck: which is the act of a developer explaining their code to a rubber duck in hope of finding a bug
+- Print/trace: using print statements inside the code to see how it executes
+- Using a Debugger: for example VS Code has a Debugger with advanced features like tracking and breakpoints
+
+#### 2. What does step over, step into and step out mean while using the debugger?
+
+- Step Over: A function is about to be invoked, but you're not interested in debugging this particular invocation, so you want the debugger to execute that function completely as one entire step.
+- Step Into: A function is about to be invoked, and you want to debug into the code of that function, so the next step is to go into that function and continue debugging step-by-step.
+- Step Out: You're done debugging this function step-by-step, and you just want the debugger to run the entire function until it returns as one entire step.
+
+#### 3. How can you start to debug a program from a certain line using the debugger?
+
+By using a line breakpoint.
+
+Line Breakpoint: You don't care how it got there, but if execution reaches a particular line of code, you want the debugger to temporarily pause execution there so you can decide what to do.
 
 ### Version control
 
