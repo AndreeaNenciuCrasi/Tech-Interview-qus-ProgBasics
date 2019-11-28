@@ -590,13 +590,42 @@ Line Breakpoint: You don't care how it got there, but if execution reaches a par
 
 ### Version control
 
-#### What are the advantages of using a version control system?
-#### What is the difference between the working directory, the staging area and the repository in git?
-#### What are remote repositories in git?
-#### Why does a merge conflict occur?
-#### Through what series of commands could you put a new file into a remote repository connected to your existing local repository?
-#### What does it mean atomic commits and descriptive commit messages?
-#### What’s the difference between git and GitHub?
+#### 1. What are the advantages of using a version control system?
+
+- easy collaboration when lots of people have to work on the same project, mainly because of the ability to merge files;
+- storing versions (properly) - it clears up things like, how often do you save changes, how do you name the files after changes and most importantly, how can you easily tell what changes have been made
+- restoring previous versions is extremely easy, just a few steps, most valuable when mistake consequences are minimized
+- backup with different options depending on the project - distributed or centralized
+
+#### 2. What is the difference between the working directory, the staging area and the repository in git?
+
+- the working directory is the part of the local repository where files are located
+- the staging area is the part of the local repository called the Index where changes are added
+- the head is the last area, where additions are commited from the Index
+- the repository is the trees, the file system of the project, maintained by git
+
+#### 3. What are remote repositories in git?
+
+A remote repository in Git is a common repository that all team members use to exchange their changes. In most cases, such a remote repository is stored on a code hosting service like GitHub or on an internal server. A local repository is stored on a team member's own computer.
+
+#### 4. Why does a merge conflict occur?
+
+Merge conflicts happen when you merge branches that have competing commits, and Git needs your help to decide which changes to incorporate in the final merge. For example if two people worked on the same file on the same function, a decision needs to be made about what will be kept from that conflict.
+
+#### 5. Through what series of commands could you put a new file into a remote repository connected to your existing local repository?
+
+git add file.txt
+git commit -m "Add the file.txt to the project"
+git push origin branch_name
+
+#### 6. What does it mean atomic commits and descriptive commit messages?
+
+When making code changes, you want to make commits that are generally smaller and that encompass only one irreducible feature, fix, or improvement. This is what is called an atomic commit, mainly from the definition of atomic: of or forming a single irreducible unit or component in a larger system. This is especially useful on code reviews and roll backs.
+
+#### 7. What’s the difference between git and GitHub?
+
+- git is the version control software itself
+- GitHub is the popular website that many programming professionals use to display and work on code. The site itself uses the git software to maintain the users' code.
 
 ## Software design
 
